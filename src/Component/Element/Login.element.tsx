@@ -33,7 +33,7 @@ export const ButtonLogin = styled.button`
     background: #0D7377;
     color: #14FFEC;
     cursor: pointer;
-    padding: 1rem;
+    padding: 0.5rem;
     border-radius: 1em;
     font-size: 1.5rem;
 
