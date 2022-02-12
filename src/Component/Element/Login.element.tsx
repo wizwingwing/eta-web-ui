@@ -26,7 +26,19 @@ export const BoxLogin = styled.div`
 export const BoxContent = styled.div`
     width: 80%;
 `
+export const BoxFooter = styled.div`
+margin-top: 1.5rem;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+`
+
+// Button
 export const ButtonLogin = styled.button`
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin: 2rem 0;
     width: 80%;
     border: none;
@@ -44,5 +56,18 @@ export const ButtonLogin = styled.button`
         box-shadow: rgba(147, 233, 255, 0.24) 0px 3px 8px;
     }
 
+`
+
+// Link
+export const LinkForgotPassword = styled.a`
+font-size: 14;
+  text-decoration: none;
+  color: #14FFEC;
+
+  &:hover {
+  text-decoration: underline;
+  color: #C2FFD9;
+
+  }
 `
 

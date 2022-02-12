@@ -1,5 +1,8 @@
 import styled from "styled-components"
 import TextField from '@mui/material/TextField'
+import Checkbox from '@mui/material/Checkbox';
+import FormControlLabel from '@mui/material/FormControlLabel';
+
 
 
 export const TextFieldBase = styled(TextField)`
@@ -23,3 +26,16 @@ export const TextFieldBase = styled(TextField)`
     }
 
 `
+
+export const FormLabel = styled(FormControlLabel)`
+    &.MuiFormControlLabel-root{
+      color: #14FFEC;
+    }
+    
+`
+export const CheckboxRemember = styled(Checkbox)`
+    &.MuiCheckbox-root, &.Mui-checked{
+      color: #14FFEC  !important;
+    }
+`
+
