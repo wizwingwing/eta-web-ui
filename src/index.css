@@ -1,7 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Mitr&display=swap");
-* 
-{
-    font-family: "Mitr", sans-serif;
+* ,.css-ahj2mt-MuiTypography-root{
+    font-family: "Mitr", sans-serif !important;
 }
 body {
     margin: 0;

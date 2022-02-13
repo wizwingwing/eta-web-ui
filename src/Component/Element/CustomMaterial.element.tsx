@@ -24,18 +24,15 @@ export const TextFieldBase = styled(TextField)`
           border-color: #C2FFD9;
         }
     }
-
 `
 
 export const FormLabel = styled(FormControlLabel)`
     &.MuiFormControlLabel-root{
       color: #14FFEC;
     }
-    
 `
 export const CheckboxRemember = styled(Checkbox)`
     &.MuiCheckbox-root, &.Mui-checked{
       color: #14FFEC  !important;
     }
 `
-

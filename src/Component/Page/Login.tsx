@@ -14,7 +14,7 @@ export const Login = () => {
           <TextFieldBase style={{ marginTop: "1rem" }} fullWidth label="Password" id="password" />
         </BoxContent>
         <BoxFooter>
-          <FormLabel control={<CheckboxRemember sx={{ '& .MuiSvgIcon-root': { fontSize: 14 } }} />} label="Remember Me" />
+          <FormLabel control={<CheckboxRemember sx={{ '& .MuiSvgIcon-root': { fontSize: 14 }}} />} label="Remember Me" />
           <LinkForgotPassword href="#" >Forgot Password</LinkForgotPassword>
         </BoxFooter>
 
