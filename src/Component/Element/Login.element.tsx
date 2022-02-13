@@ -27,7 +27,7 @@ export const BoxContent = styled.div`
     width: 80%;
 `
 export const BoxFooter = styled.div`
-margin-top: 1.5rem;
+    margin: ${({margin}:{margin ?: string})=> margin ? margin : "1.5rem 0 0 0"};
     width: 80%;
     display: flex;
     justify-content: space-between;
@@ -60,6 +60,17 @@ export const ButtonLogin = styled.button`
 
 // Link
 export const LinkForgotPassword = styled.a`
+font-size: 14;
+  text-decoration: none;
+  color: #14FFEC;
+
+  &:hover {
+  text-decoration: underline;
+  color: #C2FFD9;
+
+  }
+`
+export const LinkSignUp = styled.a`
 font-size: 14;
   text-decoration: none;
   color: #14FFEC;
