@@ -14,7 +14,6 @@
     "@types/node": "^16.7.13",
     "@types/react": "^17.0.20",
     "@types/react-dom": "^17.0.9",
-    "prettier": "^2.5.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-icons": "^4.3.1",
@@ -28,7 +27,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "format": "prettier --write \"src/**/*.(js|md|ts|css|sass|less|graphql|yml|yaml|scss|json)\""
   },
   "eslintConfig": {
     "extends": [
@@ -49,6 +49,11 @@
     ]
   },
   "devDependencies": {
-    "@types/styled-components": "^5.1.22"
+    "@types/styled-components": "^5.1.22",
+    "eslint": "^8.7.0",
+    "eslint-config-prettier": "^8.3.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.3",
+    "prettier": "2.5.1"
   }
 }
