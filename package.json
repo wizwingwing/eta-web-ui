@@ -14,12 +14,15 @@
     "@types/node": "^16.7.13",
     "@types/react": "^17.0.20",
     "@types/react-dom": "^17.0.9",
+    "@types/react-router-dom": "^5.3.3",
+    "axios": "^0.25.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
     "prettier": "^2.5.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-icons": "^4.3.1",
+    "react-router-dom": "6",
     "react-scripts": "5.0.0",
     "styled-components": "^5.3.3",
     "sweetalert": "^2.1.2",
@@ -51,9 +54,6 @@
     ]
   },
   "devDependencies": {
-    "@types/styled-components": "^5.1.22",
-    "@typescript-eslint/eslint-plugin": "^5.11.0",
-    "@typescript-eslint/parser": "^5.11.0",
-    "eslint": "^8.9.0"
+    "@types/styled-components": "^5.1.22"
   }
 }

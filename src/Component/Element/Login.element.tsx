@@ -1,5 +1,5 @@
 import styled from "styled-components"
-
+import { Link } from "react-router-dom"
 
 export const Container = styled.div`
     width: 100vw;
@@ -70,7 +70,7 @@ font-size: 14;
 
   }
 `
-export const LinkSignUp = styled.a`
+export const LinkSignUp = styled(Link)`
 font-size: 14;
   text-decoration: none;
   color: #14FFEC;
