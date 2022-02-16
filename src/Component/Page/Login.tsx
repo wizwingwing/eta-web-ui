@@ -11,30 +11,19 @@ const Login = () => {
   const [password, setPassword] = useState('')
   const homeRef = useRef<HTMLAnchorElement>(null)
 
-  const handleClick = async () => {
-
-    const headers = { "content-type": "application/json"}
-    const result = await axios.post(`${process.env.REACT_APP_BASE_URL}/auth/login`, {
-      email,
-      password
-    }, { headers })
-
-    console.log(result)
-  }
-
   return (
     <Container>
       <BoxLogin>
         <TextHeaderH1 color={"#14FFEC"}>LOGIN</TextHeaderH1>
         <BoxContent>
-          <TextFieldBase fullWidth label="Username" id="username" onChange={e => setEmail(e.target.value)} />
-          <TextFieldBase style={{ marginTop: "1rem" }} fullWidth label="Password" id="password" onChange={e => setPassword(e.target.value)} />
+          <TextFieldBase fullWidth label="Username" id="username" />
+          <TextFieldBase style={{ marginTop: "1rem" }} fullWidth label="Password" id="password"/>
         </BoxContent>
         <BoxFooter>
           <FormLabel control={<CheckboxRemember sx={{ '& .MuiSvgIcon-root': { fontSize: 14 } }} />} label="Remember Me" />
           <LinkForgotPassword href="#" >Forgot Password</LinkForgotPassword>
         </BoxFooter>
-        <ButtonLogin onClick={handleClick}><BiLogInCircle style={{ marginRight: "0.5rem" }} />Login</ButtonLogin>
+        <ButtonLogin><BiLogInCircle style={{ marginRight: "0.5rem" }} />Login</ButtonLogin>
         <LinkSignUp ref={homeRef} style={{ display: "none" }} to="/" />
         <BoxFooter style={{ display: "flex", justifyContent: "center" }} margin={"0 0 1rem 0"}>
           <LinkSignUp to="/register" >You don't have an account? Signup!</LinkSignUp>
