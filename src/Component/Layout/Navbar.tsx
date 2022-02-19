@@ -1,20 +1,24 @@
-import * as React from "react";
-import { styled } from "@mui/material/styles";
-import Box from "@mui/material/Box";
-import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
-import Badge from "@mui/material/Badge";
-import NotificationsIcon from "@mui/icons-material/Notifications";
-import AccountCircle from "@mui/icons-material/AccountCircle";
-import { Menu, MenuItem } from "@mui/material";
+import * as React from "react"
+import { styled } from "@mui/material/styles"
+import Box from "@mui/material/Box"
+import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar"
+import Toolbar from "@mui/material/Toolbar"
+import Typography from "@mui/material/Typography"
+import IconButton from "@mui/material/IconButton"
+import MenuIcon from "@mui/icons-material/Menu"
+import Badge from "@mui/material/Badge"
+import NotificationsIcon from "@mui/icons-material/Notifications"
+import AccountCircle from "@mui/icons-material/AccountCircle"
+import { Menu, MenuItem } from "@mui/material"
+import { logout } from "../../Recoil/actions/auth"
+import { useNavigate } from "react-router-dom"
+import { useRecoilState } from "recoil"
+import { openSidebar } from "../../Recoil/atoms"
 
-const drawerWidth = 240;
+const drawerWidth = 240
 
 interface AppBarProps extends MuiAppBarProps {
-  open?: boolean;
+  open?: boolean
 }
 
 const AppBar = styled(MuiAppBar, {
@@ -33,32 +37,38 @@ const AppBar = styled(MuiAppBar, {
       duration: theme.transitions.duration.enteringScreen,
     }),
   }),
-}));
+}))
 
 export default function Navbar() {
-  const settings = ["Profile", "Logout"];
-
-  const [open, setOpen] = React.useState(false);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
     null
-  );
+  )
+  const navigate = useNavigate()
+
+  const [sidebar, setOpenSidebar] = useRecoilState(openSidebar)
 
   const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElUser(event.currentTarget);
-  };
-  console.log(handleOpenUserMenu);
+    setAnchorElUser(event.currentTarget)
+  }
+
   const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
+    setAnchorElUser(null)
+  }
+  
+  const handleLogout = async () => {
+    await logout()
+    navigate('/login')
+    window.location.reload()
+  }
 
   const handleDrawerOpen = () => {
-    setOpen(true);
-  };
+    setOpenSidebar({ open: true })
+  }
 
-  const menuId = "primary-search-account-menu";
+  const menuId = "primary-search-account-menu"
 
   return (
-    <AppBar position="fixed" open={open}>
+    <AppBar position="fixed" open={sidebar.open}>
       <Toolbar
         sx={{
           display: "flex",
@@ -73,7 +83,7 @@ export default function Navbar() {
           edge="start"
           sx={{
             marginRight: "36px",
-            ...(open && { display: "none" }),
+            ...(sidebar.open && { display: "none" }),
           }}
         >
           <MenuIcon />
@@ -118,14 +128,15 @@ export default function Navbar() {
             open={Boolean(anchorElUser)}
             onClose={handleCloseUserMenu}
           >
-            {settings.map((setting) => (
-              <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                <Typography textAlign="center">{setting}</Typography>
-              </MenuItem>
-            ))}
+            <MenuItem onClick={handleCloseUserMenu}>
+              <Typography textAlign="center">Profile</Typography>
+            </MenuItem>
+            <MenuItem onClick={handleLogout}>
+              <Typography textAlign="center">Logout</Typography>
+            </MenuItem>
           </Menu>
         </Box>
       </Toolbar>
     </AppBar>
-  );
+  )
 }
