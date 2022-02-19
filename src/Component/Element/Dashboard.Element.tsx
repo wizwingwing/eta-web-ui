@@ -10,7 +10,7 @@ export const BoxContent = styled.div`
     /* background: #212121; */
     width: 100%;
     padding: 1rem;
-    border-radius: 2rem;
+    border-radius: 5px;
     display: flex;
     flex-direction: column;
     align-items: center;

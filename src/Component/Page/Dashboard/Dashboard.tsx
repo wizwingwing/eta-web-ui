@@ -31,7 +31,7 @@ export default function Dashboard() {
         </BoxContent>
       </Component>
       <BoxContent>
-        <Title>5 Transaction Latest</Title>
+        <Title>Transaction Latest</Title>
         <TransactionLatest />
       </BoxContent>
     </Component>

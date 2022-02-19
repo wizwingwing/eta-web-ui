@@ -57,6 +57,30 @@ const data = [
         amount: "16.3500",
         daytime: "11-11-2021 10:00",
     },
+    {
+        no: 6,
+        name: "Bot2",
+        symbol: "bnb",
+        status: "Buy",
+        amount: "16.3500",
+        daytime: "11-11-2021 10:00",
+    },
+    {
+        no: 7,
+        name: "Bot3",
+        symbol: "bnb",
+        status: "Buy",
+        amount: "16.3500",
+        daytime: "11-11-2021 10:00",
+    },
+    {
+        no: 8,
+        name: "Bot4",
+        symbol: "bnb",
+        status: "Sell",
+        amount: "16.3500",
+        daytime: "11-11-2021 10:00",
+    }
 
 ]
 
@@ -64,7 +88,7 @@ const data = [
 
 export default function TransactionLatest() {
     return (
-        <TableContainer sx={{ maxHeight: 200 }}>
+        <TableContainer sx={{ minHeight: 330 }}>
             <Table size="small" aria-label="sticky table" stickyHeader>
                 <TableHead>
                     <TableRow>
@@ -90,7 +114,7 @@ export default function TransactionLatest() {
                                     {item.status}
                                 </Bade>
                             </TableCell>
-                            <TableCell align="center">{item.amount}</TableCell>
+                            <TableCell align="right">{item.amount}</TableCell>
                             <TableCell align="center">{item.daytime}</TableCell>
                         </TableRow>
                     ))}
