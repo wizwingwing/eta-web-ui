@@ -3,5 +3,6 @@
     "editor.bracketPairColorization.enabled": true,
     "editor.formatOnSave": true,
     "editor.formatOnPaste": true,
-    "diffEditor.wordWrap": "on"
+    "diffEditor.wordWrap": "on",
+    "prettier.semi": false
 }

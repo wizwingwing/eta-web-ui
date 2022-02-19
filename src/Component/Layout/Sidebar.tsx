@@ -1,19 +1,21 @@
-import * as React from "react";
-import { styled, useTheme, Theme, CSSObject } from "@mui/material/styles";
-import MuiDrawer from "@mui/material/Drawer";
-import List from "@mui/material/List";
-import Divider from "@mui/material/Divider";
-import IconButton from "@mui/material/IconButton";
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import ListItem from "@mui/material/ListItem";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import { FaRobot } from "react-icons/fa";
-import { RiDashboardFill, RiFileHistoryLine } from "react-icons/ri";
-import { Link, useNavigate } from "react-router-dom";
+import * as React from "react"
+import { styled, useTheme, Theme, CSSObject } from "@mui/material/styles"
+import MuiDrawer from "@mui/material/Drawer"
+import List from "@mui/material/List"
+import Divider from "@mui/material/Divider"
+import IconButton from "@mui/material/IconButton"
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft"
+import ChevronRightIcon from "@mui/icons-material/ChevronRight"
+import ListItem from "@mui/material/ListItem"
+import ListItemIcon from "@mui/material/ListItemIcon"
+import ListItemText from "@mui/material/ListItemText"
+import { FaRobot } from "react-icons/fa"
+import { RiDashboardFill, RiFileHistoryLine } from "react-icons/ri"
+import { useNavigate } from "react-router-dom"
+import { openSidebar } from "../../Recoil/atoms"
+import { useRecoilState } from "recoil"
 
-const drawerWidth = 240;
+const drawerWidth = 240
 
 const openedMixin = (theme: Theme): CSSObject => ({
   width: drawerWidth,
@@ -22,7 +24,7 @@ const openedMixin = (theme: Theme): CSSObject => ({
     duration: theme.transitions.duration.enteringScreen,
   }),
   overflowX: "hidden",
-});
+})
 
 const closedMixin = (theme: Theme): CSSObject => ({
   transition: theme.transitions.create("width", {
@@ -34,7 +36,7 @@ const closedMixin = (theme: Theme): CSSObject => ({
   [theme.breakpoints.up("sm")]: {
     width: `calc(${theme.spacing(9)} + 1px)`,
   },
-});
+})
 
 const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
@@ -43,7 +45,7 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   padding: theme.spacing(0, 1),
   // necessary for content to be below app bar
   ...theme.mixins.toolbar,
-}));
+}))
 
 const Drawer = styled(MuiDrawer, {
   shouldForwardProp: (prop) => prop !== "open",
@@ -60,29 +62,33 @@ const Drawer = styled(MuiDrawer, {
     ...closedMixin(theme),
     "& .MuiDrawer-paper": closedMixin(theme),
   }),
-}));
-const iconDashboard = <RiDashboardFill />;
-const iconRobot = <FaRobot />;
-const iconHistory = <RiFileHistoryLine />;
+}))
+const iconDashboard = <RiDashboardFill />
+const iconRobot = <FaRobot />
+const iconHistory = <RiFileHistoryLine />
 
 const menuList = [
   { path: "/", name: "Dashboard", icon: iconDashboard },
   { path: "/bot", name: "Manage Bot", icon: iconRobot },
   { path: "/history", name: "History", icon: iconHistory },
-];
+]
 
 export default function Sidebar() {
-  const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
+  const theme = useTheme()
 
   const navigate = useNavigate()
+  const [sidebar, setOpenSidebar] = useRecoilState(openSidebar)
 
   const handleDrawerClose = () => {
-    setOpen(false);
-  };
+    setOpenSidebar({ open: false })
+  }
 
   return (
-    <Drawer sx={{ background: "#212121" }} variant="permanent" open={open}>
+    <Drawer
+      sx={{ background: "#212121" }}
+      variant="permanent"
+      open={sidebar.open}
+    >
       <DrawerHeader sx={{ background: "#212121" }}>
         <IconButton sx={{ color: "#fff" }} onClick={handleDrawerClose}>
           {theme.direction === "rtl" ? (
@@ -102,5 +108,5 @@ export default function Sidebar() {
         ))}
       </List>
     </Drawer>
-  );
+  )
 }
