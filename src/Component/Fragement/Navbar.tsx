@@ -22,7 +22,7 @@ import { FaRobot } from 'react-icons/fa';
 import { RiDashboardFill, RiFileHistoryLine } from 'react-icons/ri';
 import { Menu, MenuItem } from '@mui/material';
 import Dashboard from '../Page/Dashboard/Dashboard';
-import ManangeBot from '../Page/ManageBot/ManangeBot';
+import ManageBot from '../Page/ManageBot/ManageBot';
 import History from '../Page/History/History';
 
 const drawerWidth = 240;
@@ -215,9 +215,9 @@ export default function Navbar() {
             </Drawer>
             <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
                 <DrawerHeader />
-                <Dashboard/>
-                {/* <ManangeBot/>
-                <History/> */}
+                {/* <Dashboard/> */}
+                <ManageBot/>
+                {/* <History/> */}
             </Box>
         </Box>
     );
