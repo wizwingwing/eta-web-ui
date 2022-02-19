@@ -14,6 +14,7 @@ import {
   Container,
 } from "../Element/Register.element"
 import { LoginDto } from "../../Recoil/atoms/auth"
+import Swal from "sweetalert2"
 
 export default function Register() {
   const btnSubmit = useRef<HTMLButtonElement>(null)
@@ -26,14 +27,41 @@ export default function Register() {
     setUser({ ...user, [elementName]: elementValue })
   }
 
-  const handleRegister = async () => {
-    const result = await ajax
-      .register({ email: user.email, password: user.password } as LoginDto)
-      .then((result) => result)
-      .catch((error) => error)
-    if (result.id) {
-      navigate("/")
-      window.location.reload()
+  const handleRegister = async (e: { preventDefault: () => void }) => {
+    e.preventDefault()
+    if (user.email === "" || user.password === "") {
+      Swal.fire({
+        title: "Warning",
+        icon: "warning",
+        text: "Please enter your email and password.",
+      })
+    } else if (user.password !== user.confirmPassword) {
+      Swal.fire({
+        title: "Warning",
+        icon: "warning",
+        text: "password and confirm password do not match.",
+      })
+    } else if (user.password.length <= 8) {
+      Swal.fire({
+        title: "Warning",
+        icon: "warning",
+        text: "Password must be more than 8 characters.",
+      })
+    } else {
+      const result = await ajax
+        .register({ email: user.email, password: user.password } as LoginDto)
+        .then((result) => result)
+        .catch((error) => error)
+      if (result.id) {
+        navigate("/")
+        window.location.reload()
+      } else {
+        Swal.fire({
+          title: "Warning",
+          icon: "warning",
+          text: result.message,
+        })
+      }
     }
   }
 

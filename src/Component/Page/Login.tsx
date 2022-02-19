@@ -19,6 +19,7 @@ import { useRecoilState } from "recoil"
 import { LoginDto, loginState } from "../../Recoil/atoms/auth"
 import { useNavigate } from "react-router-dom"
 import * as ajax from "../../Utils/ajax"
+import Swal from "sweetalert2"
 
 const Login: React.FunctionComponent = () => {
   const homeRef = useRef<HTMLAnchorElement>(null)
@@ -26,14 +27,36 @@ const Login: React.FunctionComponent = () => {
   const [user, setUser] = useRecoilState(loginState)
   const navigate = useNavigate()
 
-  const handleLogin = async () => {
-    const result = await ajax
-      .login(user as LoginDto)
-      .then((result) => result)
-      .catch((error) => error)
-    if (result.id) {
-      navigate("/")
-      window.location.reload()
+  const handleLogin = async (e: { preventDefault: () => void }) => {
+    e.preventDefault()
+    if (user.email === "" || user.password === "") {
+      Swal.fire({
+        title: "Warning",
+        icon: "warning",
+        text: "Please enter your email and password.",
+      })
+    } else if (user.password.length <= 8) {
+      Swal.fire({
+        title: "Warning",
+        icon: "warning",
+        text: "Password must be more than 8 characters.",
+      })
+    } else {
+      const result = await ajax
+        .login(user as LoginDto)
+        .then((result) => result)
+        .catch((error) => error)
+
+      if (result.id) {
+        navigate("/")
+        window.location.reload()
+      } else {
+        Swal.fire({
+          title: "Warning",
+          icon: "warning",
+          text: "email or password invalid",
+        })
+      }
     }
   }
 
