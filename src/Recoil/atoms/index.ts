@@ -1,4 +1,4 @@
-import { loginState } from "./login"
+import { loginState, registerState } from "./auth"
 import { openSidebar } from "./style"
 
-export { loginState, openSidebar }
+export { loginState, registerState, openSidebar }

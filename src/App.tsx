@@ -42,7 +42,7 @@ function App() {
         <Routes>
           <Route path="/login" element={<PublicRoute component={Login} />} />
           <Route path="/register" element={<PublicRoute component={Register} />} />
-          <Route path="*" element={<AccessDenied />} />
+          <Route path="*" element={<PrivateRoute roles={[AppRoles.ADMIN, AppRoles.AUTHOR]} component={Dashboard} />} />
         </Routes>
       ) : (
         <Box sx={{ display: "flex" }}>

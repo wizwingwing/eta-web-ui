@@ -16,12 +16,13 @@ import {
 import { BiLogInCircle } from "react-icons/bi"
 import { useRef } from "react"
 import { useRecoilState } from "recoil"
-import { LoginDto, loginState } from "../../Recoil/atoms/login"
+import { LoginDto, loginState } from "../../Recoil/atoms/auth"
 import { useNavigate } from "react-router-dom"
 import * as ajax from "../../Utils/ajax"
 
 const Login: React.FunctionComponent = () => {
   const homeRef = useRef<HTMLAnchorElement>(null)
+  const btnSubmit = useRef<HTMLButtonElement>(null)
   const [user, setUser] = useRecoilState(loginState)
   const navigate = useNavigate()
 
@@ -44,7 +45,7 @@ const Login: React.FunctionComponent = () => {
 
   const handleKeywordKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
-      handleLogin()
+      btnSubmit.current?.click()
     }
   }
 
@@ -52,10 +53,11 @@ const Login: React.FunctionComponent = () => {
     <Container>
       <BoxLogin>
         <TextHeaderH1 color={"#14FFEC"}>LOGIN</TextHeaderH1>
-        <BoxContent>
+        <BoxContent onSubmit={handleLogin}>
           <TextFieldBase
             value={user.email}
             fullWidth
+            type="email"
             label="Email"
             name="email"
             onChange={handleChange}
@@ -70,22 +72,23 @@ const Login: React.FunctionComponent = () => {
             onChange={handleChange}
             onKeyPress={handleKeywordKeyPress}
           />
+          <BoxFooter>
+            <FormLabel
+              control={
+                <CheckboxRemember
+                  sx={{ "& .MuiSvgIcon-root": { fontSize: 14 } }}
+                />
+              }
+              label="Remember Me"
+            />
+            <LinkForgotPassword href="#">Forgot Password</LinkForgotPassword>
+          </BoxFooter>
+          <ButtonLogin ref={btnSubmit} type="submit" onClick={handleLogin}>
+            <BiLogInCircle style={{ marginRight: "0.5rem" }} />
+            Login
+          </ButtonLogin>
         </BoxContent>
-        <BoxFooter>
-          <FormLabel
-            control={
-              <CheckboxRemember
-                sx={{ "& .MuiSvgIcon-root": { fontSize: 14 } }}
-              />
-            }
-            label="Remember Me"
-          />
-          <LinkForgotPassword href="#">Forgot Password</LinkForgotPassword>
-        </BoxFooter>
-        <ButtonLogin onClick={handleLogin}>
-          <BiLogInCircle style={{ marginRight: "0.5rem" }} />
-          Login
-        </ButtonLogin>
+
         <LinkSignUp ref={homeRef} style={{ display: "none" }} to="/home" />
         <BoxFooter
           style={{ display: "flex", justifyContent: "center" }}

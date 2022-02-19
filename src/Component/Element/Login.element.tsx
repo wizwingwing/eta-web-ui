@@ -23,12 +23,12 @@ export const BoxLogin = styled.div`
     box-shadow: rgba(147, 233, 255, 0.24) 0px 3px 8px;
 
 `
-export const BoxContent = styled.div`
+export const BoxContent = styled.form`
     width: 80%;
 `
 export const BoxFooter = styled.div`
     margin: ${({margin}:{margin ?: string})=> margin ? margin : "1.5rem 0 0 0"};
-    width: 80%;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -40,7 +40,7 @@ export const ButtonLogin = styled.button`
     justify-content: center;
     align-items: center;
     margin: 2rem 0;
-    width: 80%;
+    width: 100%;
     border: none;
     background: #0D7377;
     color: #14FFEC;

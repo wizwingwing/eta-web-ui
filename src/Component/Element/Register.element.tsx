@@ -23,7 +23,7 @@ export const BoxRegister = styled.div`
     box-shadow: rgba(147, 233, 255, 0.24) 0px 3px 8px;
 
 `
-export const BoxContent = styled.div`
+export const BoxContent = styled.form`
     width: 80%;
 `
 export const BoxFooter = styled.div`
