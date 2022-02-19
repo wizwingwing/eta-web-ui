@@ -1,6 +1,6 @@
 import React from 'react'
 import { BiLogInCircle } from 'react-icons/bi'
-import { CheckboxRemember, FormLabel, TextFieldBase } from '../Element/CustomMaterial.element'
+import { TextFieldBase } from '../Element/CustomMaterial.element'
 import { TextHeaderH1 } from '../Element/Fontsize.element'
 import { ButtonLogin, LinkSignUp } from '../Element/Login.element'
 import { BoxContent, BoxFooter, BoxRegister, Container} from '../Element/Register.element'

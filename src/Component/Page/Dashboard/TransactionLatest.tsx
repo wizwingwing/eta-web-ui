@@ -7,15 +7,6 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { Bade } from '../../Element/Dashboard.Element'
 
-interface Latest {
-    no: number,
-    name: string,
-    symbol: string,
-    status: string,
-    amount: string,
-    daytime: string
-}
-
 const data = [
     {
         no: 1,
