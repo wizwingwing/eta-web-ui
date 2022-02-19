@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React from 'react'
+import React, { useState } from 'react'
 import { styled, alpha } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 import { BsPlusCircleFill } from 'react-icons/bs';
@@ -7,6 +7,7 @@ import { BoxContent, BoxSearch, Component } from '../../Element/ManageBot.Elemen
 import Overview from './Overview';
 import SearchIcon from '@mui/icons-material/Search';
 import InputBase from '@mui/material/InputBase';
+import CreateBot from '../../Dialog/CreateBot.dialog';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -53,12 +54,23 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
+
+
 export default function ManageBot() {
+  const [open, setOpen] = useState(false)
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
 
   return (
     <Component col={"100%"}>
       <Component col={"15% 85%"}>
-        <Button variant="contained" endIcon={<BsPlusCircleFill />}>
+        <Button 
+          variant="contained" 
+          endIcon={<BsPlusCircleFill />} 
+          onClick={handleClickOpen}
+        >
           Create Bot
         </Button>
         <BoxSearch>
@@ -80,6 +92,7 @@ export default function ManageBot() {
       <BoxContent>
         <Overview />
       </BoxContent>
+      <CreateBot open={open} setOpen={setOpen}/>
     </Component >
   )
 }
