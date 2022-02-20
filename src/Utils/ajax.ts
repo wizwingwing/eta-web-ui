@@ -5,6 +5,7 @@ const baseUrl = process.env.REACT_APP_BASE_URL
 
 export const login = async (user: LoginDto) => {
   const url = `${baseUrl}/auth/login`
+  
   const headers = { "Content-Type": "application/json" }
   const result = await axios
     .post(url, user, { headers })
@@ -21,6 +22,7 @@ export const login = async (user: LoginDto) => {
     return result.data.user
   } else return result
 }
+
 export const register = async (user: LoginDto) => {
   const url = `${baseUrl}/auth/register`
   const headers = { "Content-Type": "application/json" }
